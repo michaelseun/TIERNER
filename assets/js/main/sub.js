@@ -38,4 +38,37 @@ let swiperHome = new Swiper('.home__swiper', {
       nextEl: '.swiper-button-next',
       prevEl: '.swiper-button-prev',
     },
-  });
+    breakpoints: {
+        768: {
+            slidesPerView: 3,
+            centeredSlides: 'auto',
+        },
+        1152: {
+            centeredSlides: 'auto',
+            spaceBetween: -64,
+        }
+     }
+});
+//   scrollbar 3rd step
+/*=============== CHANGE BACKGROUND HEADER ===============*/
+const bgHeader = () =>{
+    const header = document.getElementById('header')
+    // Add a class if the bottom offset is greater than 50 of the viewport
+    this.scrollY >= 50 ? header.classList.add('bg-header') 
+                       : header.classList.remove('bg-header')
+}
+window.addEventListener('scroll', bgHeader)
+
+// scroll reveal
+
+const sr = scrollReveal({
+    origin: 'top',
+    distance: '60px',
+    duration: 2500,
+    // reset: true animations repeat
+})
+sr.reveal(`.home__swiper, .home--footer`)
+sr.reveal(`.home__circle`, {scale:1.5, delay: 300})
+sr.reveal(`.home-subcircle`, { scale: 1.5, delay: 500 })
+sr.reveal(`.home__title`, { scale: 1, origin: 'bottom', delay: 1200 })
+sr.reveal(`.swiper-button-prev, .swiper-button-next`, { origin:'bottom'})
